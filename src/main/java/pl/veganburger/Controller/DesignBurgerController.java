@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.veganburger.Model.Burger;
+import pl.veganburger.Model.Design;
 import pl.veganburger.Model.Ingredient;
 import pl.veganburger.Model.Ingredient.Type;
 
@@ -48,6 +50,13 @@ public class DesignBurgerController {
         return ingredients.stream()
                 .filter(x -> x.getType().equals(type))
                 .collect(Collectors.toList());
+    }
+
+
+    @PostMapping
+    public String processDesign (Design design) {
+        log.info("Przetwarzanie obiektu taco" + design);
+        return "redirect:/orders/current";
     }
 
 
