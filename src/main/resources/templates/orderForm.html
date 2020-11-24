@@ -17,7 +17,7 @@
 
 <form method="post" th:action="@{/orders}" th:object="${order}">
 
-    <div th:if="#{fields.hasErrors()}">
+    <div th:if="${#fields.hasErrors()}">
         <span class="validationError">
             Solve problems and try again.
         </span>
