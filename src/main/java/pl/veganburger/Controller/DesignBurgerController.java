@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.veganburger.Model.Burger;
-import pl.veganburger.Model.Design;
 import pl.veganburger.Model.Ingredient;
 import pl.veganburger.Model.Ingredient.Type;
 
@@ -54,8 +53,11 @@ public class DesignBurgerController {
 
 
     @PostMapping
-    public String processDesign (Design design) {
-        log.info("Przetwarzanie obiektu taco" + design);
+    public String processDesign (@Valid Burger design, Errors errors) {
+        if (errors.hasErrors()){
+            return "design";
+        }
+        log.info("Przetwarzanie obiektu burger " + design);
         return "redirect:/orders/current";
     }
 
