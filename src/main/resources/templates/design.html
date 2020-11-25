@@ -63,6 +63,9 @@
     <div>
         <h3>Give a name of your lovely burger:</h3>
         <input type="text" th:field="*{name}"/>
+        <span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+            this is not proper CVV code
+    </span>
         <br/>
 
         <button>Send your order!</button>

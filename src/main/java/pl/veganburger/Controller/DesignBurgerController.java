@@ -55,7 +55,7 @@ public class DesignBurgerController {
     @PostMapping
     public String processDesign (@Valid Burger design, Errors errors) {
         if (errors.hasErrors()){
-            return "design";
+            return "redirect:/design"; //TODO działa dla home, nie działa dla design, ani oderForm- powinno być design, działa też dla redirect:/design, ale wtedy traci się wpisane dane
         }
         log.info("Przetwarzanie obiektu burger " + design);
         return "redirect:/orders/current";
